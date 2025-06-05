@@ -1,5 +1,6 @@
-package com.db_project.database.domain;
+package com.db_project.database.domain.entities;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,9 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Author {
+@Entity
+@Table(name = "authors")
+public class AuthorEntity {
     // Use capital Long instead of long bc it can potentially be null, same with Integer
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_id_seq")
     private Long id;
+
     private String name;
+
     private Integer age;
 }
